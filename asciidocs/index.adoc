@@ -1,0 +1,67 @@
+= Car Dealer
+Binder Paul
+1.0.0, 2021-11-11
+ifndef::imagesdir[:imagesdir: images]
+:icons: font
+:sectnums:
+:toc: left
+
+ifdef::backend-html5[]
+
+== Description
+
+=== Class-Diagram
+[plantuml, cld, png]
+----
+@startuml
+class Car{
+-brand :String
+-model :String
+-horsepower :int
+-constructionYear :int
+-color :String
+}
+class Invoice{
+-customer :Customer
+-car :Car
+-amount :Double
+-purchaseDate :LocalDate
+}
+class Customer{
+-firstname :String
+-lastname :String
+-tel.Nr. :String
+-address :String
+}
+Invoice "1"-left->"1" Car :has >
+Customer "1"-left->"*" Invoice :gets >
+@enduml
+----
+
+=== Use-Case-Diagram
+[plantuml, ucd, png]
+----
+@startuml
+left to right direction
+actor "Customer" as c
+rectangle car_dealer {
+usecase "look at the invoices" as uc1
+usecase "examine assortment" as uc2
+usecase "buy a car" as uc3
+}
+c -- uc1
+c -- uc2
+c -- uc3
+@enduml
+----
+
+
+=== Description
+- The idea of this project is a small car dealer, who
+**  sells cars
+** give bills
+
+- The customer
+* can look at his invoices,
+* examine the seller's assortment
+* and of course buy a car
